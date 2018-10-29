@@ -1,6 +1,6 @@
 import TinyTestJ.Test;
 import TinyTestJ.RunTests;
-import TinyTestJ.RunTests;
+import TinyTestJ.Image;
 
 public class TestSuite {
 
