@@ -68,7 +68,7 @@ public class Image {
 		}	
 	}
 	public void set(int x, int y,int val) {
-		int p=100*y+x;
+		int p=this.width*y+x;
 		this.translate(val);
 		for(int count=0;count<3;count++) {
 			this.data[p]=this.ConvertData[count];
