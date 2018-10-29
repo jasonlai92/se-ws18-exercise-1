@@ -34,7 +34,7 @@ public class Image {
 		int b=a%(16*16);
 		if((v/(16*16*16*16))>0){
 			if(v>1048576) {
-				this.ConvertData[0]=Integer.parseInt(y.substring(y.length()-6, y.length()-4));	
+				this.ConvertData[0]=Integer.parseInt(y.substring(y.length()-6, y.length()-4),16);	
 			}
 			else {
 				this.ConvertData[0]=Integer.parseInt(y.substring(y.length()-5, y.length()-4));	
@@ -45,7 +45,7 @@ public class Image {
 		}
 		if(a/(16*16)>0){
 			if(a>4096) {
-				this.ConvertData[1]=Integer.parseInt(y.substring(y.length()-4, y.length()-2));	
+				this.ConvertData[1]=Integer.parseInt(y.substring(y.length()-4, y.length()-2),16);	
 			}
 			else {
 				this.ConvertData[1]=Integer.parseInt(y.substring(y.length()-3, y.length()-2));	
@@ -57,7 +57,7 @@ public class Image {
 		}	
 		if(b>0){
 			if(b>16) {
-				this.ConvertData[2]=Integer.parseInt(y.substring(y.length()-2, y.length()));	
+				this.ConvertData[2]=Integer.parseInt(y.substring(y.length()-2, y.length()),16);	
 			}
 			else {
 				this.ConvertData[2]=Integer.parseInt(y.substring(y.length()-1,y.length()));
@@ -68,11 +68,17 @@ public class Image {
 		}	
 	}
 	public void set(int x, int y,int val) {
-		int p=100*y+x;
+		int p=0;
 		this.translate(val);
-		for(int count=0;count<3;count++) {
-			this.data[p]=this.ConvertData[count];
-			p++;
+		for(int j=0;j<this.height;j++) {
+			for(int i=0;i<this.width;i++) {
+				for(int count=0;count<3;count++) {
+					if((i==x)&&(j==y)) {
+						this.data[p]=(byte)this.ConvertData[count];	
+					}
+					p++;
+				}
+			}
 		}
 	}
 	public void write(String filename) throws FileNotFoundException,IOException  {
