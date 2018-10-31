@@ -86,9 +86,9 @@ public class Image {
 		DataOutputStream file_c = new DataOutputStream(file1);
 		String w = Integer.toString(width);
 		String h = Integer.toString(height);
-		String content= "P3";
+		String content= "P6";
 		String content2= "#by JASON";
-		String content3= "15";
+		String content3= "256";
 		char n='\n';
 		char s=' ';
 		char t='\t';
