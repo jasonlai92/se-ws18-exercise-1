@@ -22,6 +22,7 @@ public class TestSuite {
     Image i = new Image(100,100);
     i.set(99,99,0x123456);
     int len = i.data.length;
+    assert (i.data[len-4] == (byte)0x00);
     assert (i.data[len-3] == (byte)0x12);
     assert (i.data[len-2] == (byte)0x34);
     assert (i.data[len-1] == (byte)0x56);
